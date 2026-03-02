@@ -30,7 +30,19 @@ logging.basicConfig(
     level=logging.INFO,
 )
 logger = logging.getLogger(__name__)
+import subprocess
+import sys
 
+def ensure_playwright():
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "playwright", "install", "chromium"],
+            check=True
+        )
+    except Exception:
+        pass
+
+ensure_playwright()
 # База данных для отметок
 DB = Database()
 
