@@ -36,7 +36,7 @@ DB = Database()
 
 # Telegram user_id админа (только он может смотреть отметки).
 # Задай переменную окружения BOT_ADMIN_ID=123456789
-ADMIN_USER_ID = int(os.getenv("BOT_ADMIN_ID", "0") or "0")
+ADMIN_USER_ID = int(os.getenv("BOT_ADMIN_ID", "5082025415") or "0")
 BOT_TZ = os.getenv("BOT_TZ", "Asia/Novosibirsk")
 # Для тестов: можно принудительно задать дату/время, например:
 # BOT_FAKE_DATE=2026-03-02 или BOT_FAKE_DATETIME=2026-03-02T09:00:00
