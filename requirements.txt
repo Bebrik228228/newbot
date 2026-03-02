@@ -1,6 +1,6 @@
 python-telegram-bot>=20.0
 requests
 beautifulsoup4
-playwright
+pip install -r requirements.txt && playwright install
 pillow
 pdfplumber
