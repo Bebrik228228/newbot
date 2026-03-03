@@ -33,6 +33,12 @@ logger = logging.getLogger(__name__)
 import subprocess
 import sys
 
+async with async_playwright() as p:
+    browser = await p.chromium.launch(
+        headless=True,
+        args=["--no-sandbox", "--disable-dev-shm-usage"]
+    )
+
 def ensure_playwright():
     try:
         subprocess.run(
