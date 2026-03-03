@@ -55,12 +55,7 @@ BOT_TZ = os.getenv("BOT_TZ", "Asia/Novosibirsk")
 # BOT_FAKE_DATETIME = os.getenv("BOT_FAKE_DATETIME", "").strip()
 
 # Главное меню (кнопки в чате)
-MAIN_MENU = ReplyKeyboardMarkup(
-    [[KeyboardButton("📅 Расписание"), KeyboardButton("✅ Отметиться")]],
-    resize_keyboard=True,
-    one_time_keyboard=False,
-    is_persistent=True,
-)
+
 
 # Чаты, которые подписаны на автообновления расписания
 SUBSCRIBERS: Set[int] = set()
