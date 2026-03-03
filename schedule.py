@@ -73,7 +73,10 @@ async def _screenshot_page_async(url: str) -> bytes:
         raise RuntimeError("Playwright не установлен. Установи пакет 'playwright' и запусти 'playwright install'.")
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+    headless=True,
+    args=["--no-sandbox", "--disable-dev-shm-usage"]
+)
         page = await browser.new_page(viewport={"width": 1280, "height": 720})
         await page.goto(url, wait_until="networkidle")
         # Ждём, пока появится таблица расписания
