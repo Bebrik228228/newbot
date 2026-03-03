@@ -12,8 +12,8 @@ try:
     from zoneinfo import ZoneInfo
 except Exception:  # pragma: no cover
     ZoneInfo = None
-
-from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
+    
+from telegram import Update
 from telegram.ext import (
     Application,
     CommandHandler,
@@ -38,12 +38,6 @@ def ensure_playwright():
         subprocess.run(
             [sys.executable, "-m", "playwright", "install", "chromium"],
             check=True
-MAIN_MENU = ReplyKeyboardMarkup(
-    [[KeyboardButton("📅 Расписание"), KeyboardButton("✅ Отметиться")]],
-    resize_keyboard=True,
-    one_time_keyboard=False,
-    is_persistent=True,
-)
         )
     except Exception:
         pass
@@ -110,7 +104,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         "Привет! Я бот расписания колледжа.\n"
         "Выбери действие кнопками ниже или используй /schedule.",
-        reply_markup=MAIN_MENU,
     )
 
 
@@ -125,7 +118,6 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "/attendance [YYYY-MM-DD] — список отметившихся за дату (только для админа в ЛС)\n"
         "Админ: /whitelist, /whitelist_add, /whitelist_remove, /whitelist_set\n"
         "/help — это сообщение",
-        reply_markup=MAIN_MENU,
     )
 
 
@@ -159,7 +151,6 @@ async def myid_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         f"Ваш Telegram ID: <code>{update.effective_user.id}</code>",
         parse_mode="HTML",
-        reply_markup=MAIN_MENU,
     )
 
 
@@ -172,7 +163,6 @@ async def mark_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text(
             "⛔ Ты не в списке допущенных к отметке. Обратись к администратору.",
             parse_mode="HTML",
-            reply_markup=MAIN_MENU,
         )
         return
 
@@ -182,7 +172,6 @@ async def mark_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text(
             "Отметиться можно только в <b>понедельник</b> и <b>четверг</b>.",
             parse_mode="HTML",
-            reply_markup=MAIN_MENU,
         )
         return
 
@@ -210,13 +199,11 @@ async def mark_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text(
             f"✅ Отмечено на <b>{date_str}</b>.",
             parse_mode="HTML",
-            reply_markup=MAIN_MENU,
         )
     else:
         await update.message.reply_text(
             f"ℹ️ Ты уже отмечался(ась) сегодня (<b>{date_str}</b>).",
             parse_mode="HTML",
-            reply_markup=MAIN_MENU,
         )
 
 
