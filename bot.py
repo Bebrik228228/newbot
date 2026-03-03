@@ -38,6 +38,12 @@ def ensure_playwright():
         subprocess.run(
             [sys.executable, "-m", "playwright", "install", "chromium"],
             check=True
+MAIN_MENU = ReplyKeyboardMarkup(
+    [[KeyboardButton("📅 Расписание"), KeyboardButton("✅ Отметиться")]],
+    resize_keyboard=True,
+    one_time_keyboard=False,
+    is_persistent=True,
+)
         )
     except Exception:
         pass
