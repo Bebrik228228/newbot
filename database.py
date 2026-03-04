@@ -9,14 +9,23 @@ from urllib.parse import urlparse
 # ---------- CONNECTION ----------
 
 def get_conn():
-    url = urlparse(os.getenv("DATABASE_URL"))
+    raw_url = os.getenv("DATABASE_URL")
+
+    if not raw_url:
+        raise RuntimeError("DATABASE_URL is not set")
+
+    # если вдруг bytes — декодируем
+    if isinstance(raw_url, bytes):
+        raw_url = raw_url.decode("utf-8")
+
+    url = urlparse(str(raw_url))
 
     return mysql.connector.connect(
         host=url.hostname,
         port=url.port or 3306,
         user=url.username,
         password=url.password,
-        database=url.path.lstrip("/"),
+        database=url.path.lstrip("/") if url.path else None,
         autocommit=False,
     )
 
