@@ -6,3 +6,4 @@ pillow
 pdfplumber
 playwright
 pymysql
+mysql-connector-python
