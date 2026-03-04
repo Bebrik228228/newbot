@@ -44,7 +44,7 @@ def ensure_playwright():
 
 # База данных для отметок
 
-DB = "mysql://root:DxRZPuMGvqwBYEsFQoMUJIZSEfjYTsQw@centerbeam.proxy.rlwy.net:37870/bot_data"
+DB = Database()
 
 # Telegram user_id админа (только он может смотреть отметки).
 # Задай переменную окружения BOT_ADMIN_ID=123456789
