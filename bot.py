@@ -471,7 +471,7 @@ async def post_init(application: Application) -> None:
 
 
 def main() -> None:
-    TOKEN = os.getenv("8703610942:AAG-qAejcLejHwgjHFfDspsOXW-0nP86_DA")
+    TOKEN = os.getenv("BOT_TOKEN")
 
     application = Application.builder().token(TOKEN).post_init(post_init).build()
 
