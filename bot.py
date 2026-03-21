@@ -371,15 +371,15 @@ async def whitelist_list_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await update.message.reply_text(chunk, parse_mode="HTML")
 
 
-async def menu_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Обработка нажатий на кнопки меню."""
-    if not update.message or not update.message.text:
-        return
-    t = update.message.text.strip()
-    if t == "📅 Расписание":
-        await schedule_cmd(update, context)
-    elif t == "✅ Отметиться":
-        await mark_cmd(update, context)
+# async def menu_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+#     """Обработка нажатий на кнопки меню."""
+#     if not update.message or not update.message.text:
+#         return
+#     t = update.message.text.strip()
+#     if t == "📅 Расписание":
+#         await schedule_cmd(update, context)
+#     elif t == "✅ Отметиться":
+#         await mark_cmd(update, context)
 
 
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
