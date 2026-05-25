@@ -1,5 +1,3 @@
-"""Simple Telegram bot: schedule with auto-updates on changes."""
-
 import asyncio
 import logging
 import hashlib
