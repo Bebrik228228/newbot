@@ -44,8 +44,7 @@ def ensure_playwright():
 
 DB = Database()
 
-# Telegram user_id админа (только он может смотреть отметки).
-# Задай переменную окружения BOT_ADMIN_ID=123456789
+
 ADMIN_USER_ID = int(os.getenv("BOT_ADMIN_ID", "5082025415") or "0")
 BOT_TZ = os.getenv("BOT_TZ", "Asia/Novosibirsk")
 # Для тестов: можно принудительно задать дату/время, например:
